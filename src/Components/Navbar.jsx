@@ -52,8 +52,20 @@ function Navbar() {
               {cartCount}
             </span>
           </button>
-          <button className="bg-green-500 px-2 py-1 rounded hover:bg-green-600" onClick={() =>setCartCount(prev => prev+1)}>+</button>
-          <button className="bg-red-500 px-2 py-1 rounded hover:bg-red-600" onClick={() =>setCartCount (prev => Math.max (prev -1,0))}>-</button>
+          <div className="flex items-center gap-1">
+            <button
+              className="bg-green-500 px-2 py-1 rounded hover:bg-green-600"
+              onClick={() => setCartCount((prev) => prev + 1)}
+            >
+              +
+            </button>
+            <button
+              className="bg-red-500 px-2 py-1 rounded hover:bg-red-600"
+              onClick={() => setCartCount((prev) => Math.max(prev - 1, 0))}
+            >
+              -
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
