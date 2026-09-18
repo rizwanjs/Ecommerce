@@ -74,7 +74,7 @@ function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="shrink-0 text-2xl md:hidden mr-8"
+          className="shrink-0 text-2xl md:hidden"
         >
           {menuOpen ? "✕" : "☰"}
         </button>
