@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Search, Heart, ShoppingCart, User } from "lucide-react";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(2);
+  const [cartCount, setCartCount] = useState(0);
 
   return (
     <nav className="bg-black text-white shadow-md">
       {/* Main Navbar */}
-      <div className="flex items-center justify-between px-6 py-4 md:px-8">
+      <div className="w-full flex items-center justify-between px-4 py-4 md:px-8">
         <h1 className="text-2xl font-bold tracking-wide hover:text-gray-300">
           My Store
         </h1>
@@ -52,18 +52,21 @@ function Navbar() {
               {cartCount}
             </span>
           </button>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2 ml-2">
             <button
-              className="bg-green-500 px-2 py-1 rounded hover:bg-green-600"
-              onClick={() => setCartCount((prev) => prev + 1)}
-            >
-              +
-            </button>
-            <button
-              className="bg-red-500 px-2 py-1 rounded hover:bg-red-600"
+              className="bg-red-500 px-2 py-1 rounded-md hover:bg-red-600 transition"
               onClick={() => setCartCount((prev) => Math.max(prev - 1, 0))}
             >
               -
+            </button>
+
+            <span className="px-3 font-semibold"> {cartCount} </span>
+
+            <button
+              className="bg-green-500 px-2 py-1 rounded-md hover:bg-green-600 transition"
+              onClick={() => setCartCount((prev) => prev + 1)}
+            >
+              +
             </button>
           </div>
         </div>
@@ -71,7 +74,7 @@ function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-2xl md:hidden"
+          className="shrink-0 text-2xl md:hidden mr-8"
         >
           {menuOpen ? "✕" : "☰"}
         </button>
@@ -93,7 +96,13 @@ function Navbar() {
               className="flex items-center gap-2 hover:text-gray-300"
               href="/cart"
             >
-              <ShoppingCart size={18} />
+              <span className="relative">
+                <ShoppingCart size={18} />
+
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              </span>
               Cart
             </a>
 
